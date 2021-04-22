@@ -35,7 +35,7 @@ class PathHelper {
 			str_replace(
 				array( '%2F', '%5C' ),
 				array( '/', '\\' ),
-				rawurlencode( $path )
+				rawurlencode( strtok($path, "?") )
 			),
 			$options
 		);
@@ -68,7 +68,7 @@ class PathHelper {
 	public static function basename( $path, $suffix = '' ) {
 		return rawurldecode(
 			basename(
-				str_replace( array( '%2F', '%5C' ), '/', rawurlencode( $path ) ),
+				str_replace( array( '%2F', '%5C' ), '/', rawurlencode( strtok($path, "?") ) ),
 				$suffix
 			)
 		);
